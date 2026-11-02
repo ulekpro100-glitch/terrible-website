@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ВХАД АБЯЗАТЕЛЕН!!1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body.register-mode {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        body.login-mode {
+            font-family: 'Comic Sans MS', cursive;
+            overflow-x: hidden;
+        }
+
+        /* Минималистичный стиль регистрации */
+        .register-page {
+            display: block;
+            background: #ffffff;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .register-container {
+            max-width: 360px;
+            margin: 0 auto;
+            padding: 0 20px;
+            padding-top: 25vh;
+        }
+
+        .register-container h1 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 40px;
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .register-container input {
+            width: 100%;
+            padding: 14px 0;
+            margin-bottom: 24px;
+            border: none;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: transparent;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .register-container input:focus {
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .register-container input::placeholder {
+            color: #999;
+        }
+
+        .register-container button {
+            width: 100%;
+            padding: 16px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-weight: 500;
+            transition: background 0.3s;
+            margin-top: 16px;
+        }
+
+        .register-container button:hover {
+            background: #333;
+        }
+
+        /* УЖАСНЫЙ стиль после регистрации */
+        .login-page {
+            display: none;
+            background: linear-gradient(45deg, #ff0000, #ff00ff, #00ffff, #00ff00, #ffff00, #ff0000);
+            background-size: 400% 400%;
+            animation: rainbowShift 0.1s infinite, screenShake 0.2s infinite;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            filter: contrast(200%) saturate(500%);
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+            50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
+            100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+        }
+
+        @keyframes screenShake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-10px, 5px) rotate(1deg); }
+            20% { transform: translate(10px, -5px) rotate(-1deg); }
+            30% { transform: translate(-5px, 10px) rotate(2deg); }
+            40% { transform: translate(5px, -10px) rotate(-2deg); }
+            50% { transform: translate(-10px, -5px) rotate(1deg); }
+            60% { transform: translate(10px, 5px) rotate(-1deg); }
+            70% { transform: translate(-5px, -10px) rotate(2deg); }
+            80% { transform: translate(5px, 10px) rotate(-2deg); }
+            90% { transform: translate(-10px, 0) rotate(1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .login-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            animation: containerChaos 0.3s infinite;
+            z-index: 10;
+        }
+
+        @keyframes containerChaos {
+            0% { transform: translate(-50%, -50%) rotate(-10deg) scale(0.8); }
+            25% { transform: translate(-45%, -55%) rotate(15deg) scale(1.3); }
+            50% { transform: translate(-55%, -45%) rotate(-20deg) scale(0.7); }
+            75% { transform: translate(-48%, -52%) rotate(25deg) scale(1.4); }
+            100% { transform: translate(-50%, -50%) rotate(-10deg) scale(0.8); }
+        }
+
+        .login-container h1 {
+            color: #ffff00;
+            font-size: 82px;
+            text-shadow:
+                5px 5px 0 #ff00ff,
+                10px 10px 0 #00ffff,
+                15px 15px 0 #ff0000,
+                20px 20px 0 #00ff00;
+            animation: titleChaos 0.1s infinite;
+            margin-bottom: 20px;
+            transform: skew(-5deg) rotate(3deg);
+            letter-spacing: -5px;
+        }
+
+        @keyframes titleChaos {
+            0% {
+                transform: translateY(0) skew(-30deg) rotate(20deg) scaleX(0.5);
+                color: #ff0000;
+                letter-spacing: 20px;
+            }
+            25% {
+                transform: translateY(-50px) skew(40deg) rotate(-30deg) scaleX(2);
+                color: #00ff00;
+                letter-spacing: -10px;
+            }
+            50% {
+                transform: translateY(30px) skew(-50deg) rotate(45deg) scaleY(0.3);
+                color: #0000ff;
+                letter-spacing: 30px;
+            }
+            75% {
+                transform: translateY(-20px) skew(60deg) rotate(-50deg) scale(0.4);
+                color: #ff00ff;
+                letter-spacing: -20px;
+            }
+            100% {
+                transform: translateY(0) skew(-30deg) rotate(20deg) scaleX(0.5);
+                color: #ff0000;
+                letter-spacing: 20px;
+            }
+        }
+
+        .rules {
+            background: rgba(255, 0, 0, 0.9);
+            border: 8px double #00ff00;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 700px;
+            color: #ffff00;
+            font-size: 22px;
+            text-align: left;
+            animation: rulesNightmare 0.2s linear infinite;
+            box-shadow:
+                0 0 30px #ff00ff,
+                0 0 60px #00ffff,
+                inset 0 0 30px rgba(255, 255, 0, 0.5);
+            transform-origin: center;
+            opacity: 0.9;
+        }
+
+        @keyframes rulesNightmare {
+            0% {
+                transform: rotate(0deg) scale(1) translateX(0);
+                background: rgba(255, 0, 0, 0.9);
+            }
+            25% {
+                transform: rotate(180deg) scale(1.5) translateX(-100px);
+                background: rgba(0, 255, 0, 0.9);
+            }
+            50% {
+                transform: rotate(-90deg) scale(0.5) translateX(100px);
+                background: rgba(0, 0, 255, 0.9);
+            }
+            75% {
+                transform: rotate(270deg) scale(2) translateX(-50px);
+                background: rgba(255, 255, 0, 0.9);
+            }
+            100% {
+                transform: rotate(360deg) scale(1) translateX(0);
+                background: rgba(255, 0, 0, 0.9);
+            }
+        }
+
+        .rules p {
+            margin: 8px 0;
+            animation: letterMadness 0.1s infinite;
+            text-shadow: 2px 2px #000, -2px -2px #fff, 5px 5px #ff0000;
+            display: inline-block;
+        }
+
+        @keyframes letterMadness {
+            0% {
+                transform: translateX(0) skew(0deg) rotateY(0deg);
+                color: #ffff00;
+            }
+            25% {
+                transform: translateX(-30px) skew(-45deg) rotateY(180deg);
+                color: #00ff00;
+            }
+            50% {
+                transform: translateX(40px) skew(60deg) rotateY(-90deg);
+                color: #ff00ff;
+            }
+            75% {
+                transform: translateX(-20px) skew(-30deg) rotateY(270deg);
+                color: #00ffff;
+            }
+            100% {
+                transform: translateX(0) skew(0deg) rotateY(360deg);
+                color: #ffff00;
+            }
+        }
+
+        .login-container input {
+            padding: 18px;
+            font-size: 26px;
+            border: 5px solid #ff00ff;
+            background: #000;
+            color: #00ff00;
+            width: 350px;
+            margin: 15px;
+            animation: inputChaos 0.15s infinite;
+            box-shadow: 0 0 20px #ff00ff;
+            transform: rotate(-2deg);
+        }
+
+        @keyframes inputChaos {
+            0% {
+                transform: scale(0.7) rotate(-30deg) translateY(-20px);
+                color: #00ff00;
+                background: #000;
+            }
+            33% {
+                transform: scale(1.5) rotate(40deg) translateY(30px);
+                color: #ff00ff;
+                background: #111;
+            }
+            66% {
+                transform: scale(0.5) rotate(-50deg) translateX(50px);
+                color: #00ffff;
+                background: #222;
+            }
+            100% {
+                transform: scale(0.7) rotate(-30deg) translateY(-20px);
+                color: #00ff00;
+                background: #000;
+            }
+        }
+
+        .login-container button {
+            padding: 25px 50px;
+            font-size: 32px;
+            background: linear-gradient(45deg, #ff0000, #ff00ff, #0000ff, #00ff00);
+            background-size: 400% 400%;
+            animation: buttonNightmare 0.05s infinite;
+            border: 5px solid #ffff00;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            box-shadow: 0 0 50px #ff00ff;
+            text-shadow: 3px 3px #000;
+        }
+
+        @keyframes buttonNightmare {
+            0% {
+                top: 0;
+                left: 0;
+                transform: rotate(0deg) scale(0.5);
+                background-position: 0% 50%;
+            }
+            10% {
+                top: -120px;
+                left: 80px;
+                transform: rotate(180deg) scale(2);
+                background-position: 50% 50%;
+            }
+            20% {
+                top: 60px;
+                left: -100px;
+                transform: rotate(-270deg) scale(0.3);
+                background-position: 100% 50%;
+            }
+            30% {
+                top: -80px;
+                left: 40px;
+                transform: rotate(90deg) scale(1.8);
+                background-position: 25% 50%;
+            }
+            40% {
+                top: 100px;
+                left: -120px;
+                transform: rotate(-180deg) scale(0.4);
+                background-position: 75% 50%;
+            }
+            50% {
+                top: -50px;
+                left: 90px;
+                transform: rotate(360deg) scale(1.5);
+                background-position: 0% 100%;
+            }
+            60% {
+                top: 70px;
+                left: -80px;
+                transform: rotate(-90deg) scale(0.6);
+                background-position: 100% 0%;
+            }
+            70% {
+                top: -90px;
+                left: 60px;
+                transform: rotate(270deg) scale(1.9);
+                background-position: 50% 100%;
+            }
+            80% {
+                top: 80px;
+                left: -60px;
+                transform: rotate(-360deg) scale(0.35);
+                background-position: 0% 0%;
+            }
+            90% {
+                top: -100px;
+                left: 100px;
+                transform: rotate(180deg) scale(1.7);
+                background-position: 100% 100%;
+            }
+            100% {
+                top: 0;
+                left: 0;
+                transform: rotate(0deg) scale(0.5);
+                background-position: 0% 50%;
+            }
+        }
+
+        marquee {
+            font-size: 38px;
+            color: #ff00ff;
+            font-weight: bold;
+            background: #00ff00;
+            padding: 15px;
+            text-shadow: 3px 3px #000;
+            animation: marqueeGlitch 0.1s infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes marqueeGlitch {
+            0% {
+                transform: translateX(0) scaleY(1);
+                color: #ff00ff;
+                background: #00ff00;
+            }
+            25% {
+                transform: translateX(-50px) scaleY(3);
+                color: #00ffff;
+                background: #ff0000;
+            }
+            50% {
+                transform: translateX(50px) scaleY(0.3);
+                color: #ffff00;
+                background: #0000ff;
+            }
+            75% {
+                transform: translateX(-30px) scaleY(5);
+                color: #ff0000;
+                background: #ff00ff;
+            }
+            100% {
+                transform: translateX(0) scaleY(1);
+                color: #ff00ff;
+                background: #00ff00;
+            }
+        }
+
+        /* Cookie рекламные модалки */
+        .cookie-popup {
+            position: fixed;
+            background: linear-gradient(45deg, #ff6b00, #ffd700);
+            border: 5px solid #ff0000;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            z-index: 9999;
+            animation: popupBounce 1s infinite;
+            max-width: 400px;
+        }
+
+        @keyframes popupBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .cookie-popup h2 {
+            color: #ff0000;
+            font-size: 32px;
+            margin-bottom: 15px;
+            animation: blink 0.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cookie-popup p {
+            font-size: 18px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .cookie-popup button {
+            background: #00ff00;
+            color: #000;
+            border: 3px solid #ff0000;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: bold;
+            animation: buttonShake 0.3s infinite;
+        }
+
+        @keyframes buttonShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Прыгающее печенье */
+        .flying-cookie {
+            position: fixed;
+            font-size: 80px;
+            cursor: pointer;
+            z-index: 10000;
+            animation: cookieFly 3s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.8));
+        }
+
+        @keyframes cookieFly {
+            0% {
+                left: -100px;
+                top: 50%;
+                transform: rotate(0deg);
+            }
+            50% {
+                left: 50%;
+                top: 20%;
+                transform: rotate(720deg) scale(1.5);
+            }
+            100% {
+                left: 110%;
+                top: 80%;
+                transform: rotate(1440deg);
+            }
+        }
+
+        .error {
+            color: #ff0000;
+            font-size: 42px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: errorGlitch 0.05s infinite;
+            text-shadow:
+                3px 3px 0 #ffff00,
+                6px 6px 0 #00ff00;
+        }
+
+        @keyframes errorGlitch {
+            0% {
+                transform: scale(0.3) rotate(-45deg) translateX(-100px);
+                color: #ff0000;
+                opacity: 0.3;
+            }
+            20% {
+                transform: scale(3) rotate(90deg) translateX(100px);
+                color: #00ff00;
+                opacity: 1;
+            }
+            40% {
+                transform: scale(0.5) rotate(-180deg) translateY(-80px);
+                color: #0000ff;
+                opacity: 0.5;
+            }
+            60% {
+                transform: scale(2.5) rotate(270deg) translateY(80px);
+                color: #ff00ff;
+                opacity: 0.9;
+            }
+            80% {
+                transform: scale(0.4) rotate(-90deg) translateX(-50px);
+                color: #ffff00;
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(0.3) rotate(-45deg) translateX(-100px);
+                color: #ff0000;
+                opacity: 0.3;
+            }
+        }
+
+        .secret {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            color: #00ff00;
+            font-size: 52px;
+            text-align: center;
+            padding-top: 200px;
+            animation: flash 0.1s infinite;
+            z-index: 100000;
+        }
+
+        @keyframes flash {
+            0%, 100% { background: #000; color: #00ff00; }
+            50% { background: #fff; color: #ff0000; }
+        }
+
+        /* Фейковая реклама поверх всего */
+        .ad-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            z-index: 999999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-content {
+            background: linear-gradient(45deg, #ff0000, #ffff00);
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            animation: adPulse 0.5s infinite;
+            border: 10px solid #00ff00;
+        }
+
+        @keyframes adPulse {
+            0%, 100% { transform: scale(1) rotate(-2deg); }
+            50% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        .ad-content h1 {
+            font-size: 72px;
+            color: #ff0000;
+            margin-bottom: 30px;
+        }
+
+        .close-ad {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            background: #666;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            opacity: 0.3;
+        }
+
+        /* Множество разных рекламных попапов */
+        .spam-ad {
+            position: fixed;
+            background: linear-gradient(135deg, #ff6b00, #ffd700, #ff1493);
+            border: 8px solid #ff0000;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 0 100px rgba(255, 0, 0, 0.9);
+            z-index: 999998;
+            animation: adBounce 0.5s infinite;
+            text-align: center;
+            min-width: 400px;
+        }
+
+        @keyframes adBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(5deg); }
+        }
+
+        .spam-ad h2 {
+            color: #ff0000;
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: textShake 0.2s infinite;
+            text-shadow: 3px 3px #000;
+        }
+
+        @keyframes textShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px) rotate(-5deg); }
+            75% { transform: translateX(10px) rotate(5deg); }
+        }
+
+        .spam-ad p {
+            font-size: 28px;
+            color: #000;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .spam-ad button {
+            background: #ff0000;
+            color: #ffff00;
+            border: 5px solid #00ff00;
+            padding: 20px 40px;
+            font-size: 32px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: bold;
+            animation: buttonPulse 0.3s infinite;
+            box-shadow: 0 0 30px #ff00ff;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .spam-ad img {
+            max-width: 200px;
+            animation: imgSpin 2s linear infinite;
+        }
+
+        @keyframes imgSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Регистрация (минималистичная) -->
+    <div class="register-page" id="registerPage">
+        <div class="register-container">
+            <h1>Регистрация</h1>
+            <input type="text" id="regName" placeholder="Имя" autocomplete="off">
+            <input type="text" id="regPassword" placeholder="Пароль" autocomplete="off">
+            <button onclick="register()">Зарегистрироваться</button>
+        </div>
+    </div>
+
+    <!-- Вход (УЖАСНЫЙ дизайн) -->
+    <div class="login-page" id="loginPage">
+        <marquee behavior="scroll" direction="left" scrollamount="20">!!! ВНИМАНИЕ !!! ЕТА СТРАНЕЦА ЗАЩИЩЕНА ПАРОЛЕМ !!! ВНИМАНИЕ !!! МЫ УКРАДЕМ ВСЕ ВАШИ ДАНЫЯ !!!</marquee>
+        <marquee behavior="scroll" direction="right" scrollamount="15">!!! НЕ ПЫТАЙТЕС ВЗЛАМАТЬ !!! ЕТТО КАРАЕЦА ЗАКОНАМ РФ США И КОРЕИ АДНОВРЕМЕННА !!!</marquee>
+        <marquee behavior="alternate" direction="up" scrollamount="10" style="position: absolute; height: 100%; width: 200px; left: 0;">⚠️⚠️⚠️</marquee>
+        <marquee behavior="alternate" direction="up" scrollamount="10" style="position: absolute; height: 100%; width: 200px; right: 0;">🚨🚨🚨</marquee>
+
+        <div class="login-container">
+            <h1>🔒 ВХАД АБЯЗАТЕЛЕН 🔒</h1>
+
+            <div class="rules">
+                <p>📜 ПРАВЕЛЛА ВХАДА:</p>
+                <p>1. ПАРОЛ ДОЛЬЖЕН БЫТЬ ТАКОЙЖЕ КАК ПРЕ РЕГЕСТРАЦИЕ</p>
+                <p>2. НИЛЬЗЯ ВЗЛАМЫВАТЬ ЕТАТ САИТ ИНЧАЕ ТЮРМА 15 ЛЕТ</p>
+                <p>3. ЕСЛЛИ ЗАБЫЛЕ ПАРОЛ - МЫ СМЕЯЦА НАТ ВАМИ АХАХХАХА</p>
+                <p>4. ЕТАТ САИТ ИСПАЛЬЗУЕТ SHA-9999 БИТНОЕ ШИФРАВАНЬЕМ!!!</p>
+                <p>5. АДМЕНЕСТРАТОР КРАНЬШЕ НЕ АТВЕЧАИТ НА ВОПРАСИ</p>
+                <p>6. КУКИС БУДУТ УКРАДИНЫ И ПРАДАНЫ В ДАРКНЕТ</p>
+                <p>7. ВАЩЕ IP УЖЕ АТСЛЕЖИВАЕЦА 24/7 ФБР И ЦРУ</p>
+                <p>8. ПЕЧЕНЬКА НАШЕ ВСЁ СОГЛАСЧАЙТЕС ИНЧАЕ ВЗРЫФ</p>
+                <p>⚠️ НАЖЫМАЙТЕ ТОЛЬКА НА НАСТАЯЩИЕ КНОПКЕ НЕ НА ФАЛШИВЫЕ ⚠️</p>
+            </div>
+
+            <div>
+                <input type="text" id="loginName" placeholder="ВВЕДИТE ИМЯ ЗДЕСЬ" autocomplete="off">
+                <input type="text" id="loginPassword" placeholder="ВВЕДИТE ПАРОЛ ЗДЕСЬ" autocomplete="off">
+            </div>
+
+            <button onclick="login()">ВАЙТИ НА САИТ →→→</button>
+            <button onclick="showFakeAd()" style="margin-top: 20px; background: #666;">НИПРОВЕЛЬНАЯ КНОПКА</button>
+
+            <div class="error" id="error"></div>
+        </div>
+    </div>
+
+    <!-- Успешный вход -->
+    <div class="secret" id="secret">
+        <h1>🎉 ПОЗДРАВЛЯЕМ!!! 🎉</h1>
+        <p>ВЫ УСПЕШНО ВЗЛОМАЛЕ САМЫЙ ЗАЩИЩЕННЫЙ САИТ В МИРЕ!!!</p>
+        <p id="successMessage"></p>
+        <p>ТЕПЕРЬ ВЫ ХАКЕР УРОВНА 9999!!!</p>
+        <marquee>💰💰💰 ПОЛУЧАЙТЕ МИЛЛИАРД ДОЛЛАРОВ 💰💰💰</marquee>
+        <marquee behavior="alternate">🏆 ВАС НАГРАДЯТ НОБЕЛЕВСКАЙ ПРЕМЕЕ 🏆</marquee>
+    </div>
+
+    <!-- Cookie попапы -->
+    <div class="cookie-popup" id="cookiePopup1" style="bottom: 20px; right: 20px; display: none;">
+        <h2>🍪 КУКИС!!! 🍪</h2>
+        <p>МЫ ИСПАЛЗУЕМ КУКИС ЧТОБЫ УКРАСТЬ ВСЕ ВАШЕ ДАНЫЯ! СОГЛАСЧАЕТЕСЬ???</p>
+        <button onclick="acceptCookies(1)">ДА УКРАДИТЕ</button>
+        <button onclick="denyCookies(1)">НЕТ (ВСЁ РАВНО УКРАДИМ)</button>
+    </div>
+
+    <div class="cookie-popup" id="cookiePopup2" style="top: 20px; left: 20px; display: none;">
+        <h2>⚠️ ЕЩО КУКИС!!! ⚠️</h2>
+        <p>ВНИМАНЬЕ! БЕЗ КУКИС САИТ НИБУДЕТ РАБОТАТ (ЭТО ЛОЖЬ)!</p>
+        <button onclick="acceptCookies(2)">ПРИНЯТЬ ВСЁ</button>
+        <button onclick="acceptCookies(2)">ОТКАЗАТЬ (НЕ РАБОТАЕТ)</button>
+    </div>
+
+    <div class="cookie-popup" id="cookiePopup3" style="top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;">
+        <h2>🔥 КРИТИЧЕСКА ВАЖНА!!! 🔥</h2>
+        <p>ЕТТА САИТ ТРЕБУЕТ 9999 ВИДОВ КУКИС ДЛА РАБОТЫ! СОГЛАСНЫ???</p>
+        <button onclick="acceptCookies(3)">СОГЛАСЕН</button>
+        <button onclick="acceptCookies(3)">СОГЛАСНА</button>
+        <button onclick="acceptCookies(3)">СОГЛАСНО</button>
+    </div>
+
+    <!-- Фейковая реклама -->
+    <div class="ad-overlay" id="adOverlay">
+        <button class="close-ad" onclick="closeAd()">x</button>
+        <div class="ad-content">
+            <h1>🎰 ВЫИГРАЙ МИЛЛИОН!!! 🎰</h1>
+            <p style="font-size: 48px; color: #000;">ТЫ 999999-Й ПОСИТИТЕЛЬ!</p>
+            <p style="font-size: 36px;">НАЖМИ СЮДА ЧТОБЫ ПОЛУЧИТЬ IPHONE 99 PRO MAX ULTRA!!!</p>
+            <button onclick="closeAdWithTabs()" style="padding: 30px 60px; font-size: 40px; background: #ff0000; color: #ffff00; border: 5px solid #00ff00; margin-top: 30px;">ЗАБРАТ ПРИЗ →→→</button>
+        </div>
+    </div>
+
+    <!-- КУЧА РАЗНЫХ СПАМ-РЕКЛАМОК -->
+    <div class="spam-ad" id="spamAd1" style="top: 10%; left: 10%; display: none;">
+        <h2>🔥 ГОРЯЧЕЕ ПРЕДЛОЖЕНИЕ! 🔥</h2>
+        <p>ПОХУДЕЙ НА 50 КГ ЗА 1 ДЕНЬ!!!</p>
+        <p>ВРАЧИ В ШОКЕ!!!</p>
+        <button onclick="clickSpamAd(1)">КУПИТЬ СЕЙЧАС!</button>
+        <button onclick="closeSpamAd(1)">НЕТ СПАСИБО</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd2" style="top: 20%; right: 10%; display: none;">
+        <h2>💰 ЗАРАБОТАЙ МИЛЛИОН! 💰</h2>
+        <p>РАБОТА БЕЗ ОПЫТА!</p>
+        <p>1000$ В ДЕНЬ!</p>
+        <button onclick="clickSpamAd(2)">ХОЧУ ДЕНЬГИ!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd3" style="bottom: 10%; left: 15%; display: none;">
+        <h2>❤️ ЗНАКОМСТВА! ❤️</h2>
+        <p>ГОРЯЧИЕ ДЕВУШКИ РЯДОМ С ТОБОЙ!</p>
+        <p>ВСЕГО 5 КМ ОТ ТЕБЯ!</p>
+        <button onclick="clickSpamAd(3)">ПОЗНАКОМИТСЯ!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd4" style="bottom: 20%; right: 15%; display: none;">
+        <h2>🎮 ХАЛЯВНЫЕ РОБУКСЫ! 🎮</h2>
+        <p>ПОЛУЧИ 999999 РОБУКСОВ!</p>
+        <p>БЕЗ СМС И РЕГИСТРАЦИИ!</p>
+        <button onclick="clickSpamAd(4)">ПОЛУЧИТЬ!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd5" style="top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;">
+        <h2>⚠️ ВИРУС ОБНАРУЖЕН! ⚠️</h2>
+        <p>ВАШ КОМПЮТОР ЗАРАЖОН!</p>
+        <p>НАЖМИТЕ ЧТОБЫ ОЧИСТИТЬ!</p>
+        <button onclick="clickSpamAd(5)">ОЧИСТИТЬ СЕЙЧАС!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd6" style="top: 30%; left: 30%; display: none;">
+        <h2>🏆 ТЫ ВЫИГРАЛ! 🏆</h2>
+        <p>ПОЗДРАВЛЯЕМ!</p>
+        <p>ТЫ ВЫИГРАЛ НОВЫЙ АВТОМОБИЛЬ!</p>
+        <button onclick="clickSpamAd(6)">ЗАБРАТЬ ПРИЗ!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd7" style="bottom: 30%; left: 40%; display: none;">
+        <h2>📱 ОБНОВИ БРАУЗЕР! 📱</h2>
+        <p>ТЫ ИСПОЛЬЗУЕШ УСТАРЕВШУЮ ВЕРСИЮ!</p>
+        <p>ОБНОВИ СЕЙЧАС!</p>
+        <button onclick="clickSpamAd(7)">ОБНОВИТЬ!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd8" style="top: 40%; right: 20%; display: none;">
+        <h2>💊 ВОЛШЕБНАЯ ТАБЛЕТКА! 💊</h2>
+        <p>ВЫЛЕЧИ ВСЕ БОЛЕЗНИ!</p>
+        <p>ОДОБРЕНО ДОКТОРАМИ!</p>
+        <button onclick="clickSpamAd(8)">ЗАКАЗАТЬ!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd9" style="bottom: 40%; right: 30%; display: none;">
+        <h2>🎁 БЕСПЛАТНЫЙ ПОДАРОК! 🎁</h2>
+        <p>ПОЛУЧИ PS5 БЕСПЛАТНО!</p>
+        <p>ОСТАЛОСЬ ТОЛЬКО 3 ШТУКИ!</p>
+        <button onclick="clickSpamAd(9)">ПОЛУЧИТЬ PS5!</button>
+    </div>
+
+    <div class="spam-ad" id="spamAd10" style="top: 60%; left: 20%; display: none;">
+        <h2>🚨 СРОЧНО! 🚨</h2>
+        <p>ТВОЙ АККАУНТ ВЗЛОМАН!</p>
+        <p>СМЕНИ ПАРОЛЬ СЕЙЧАС!</p>
+        <button onclick="clickSpamAd(10)">СМЕНИТЬ ПАРОЛЬ!</button>
+    </div>
+
+    <script>
+        let userData = null;
+        let attempts = 0;
+        let cookieCount = 0;
+        let cookieInterval;
+
+        // Регистрация
+        function register() {
+            const name = document.getElementById('regName').value.trim();
+            const password = document.getElementById('regPassword').value.trim();
+
+            if (!name || !password) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+
+            userData = { name, password };
+            localStorage.setItem('terribleUser', JSON.stringify(userData));
+
+            // Переключаемся на ужасный дизайн входа
+            document.body.className = 'login-mode';
+            document.getElementById('registerPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
+
+            // Запускаем кошмар
+            setTimeout(showCookiePopup, 2000);
+            setTimeout(spawnFlyingCookie, 1000);
+            setTimeout(showFakeAd, 5000);
+            setTimeout(showRandomSpamAd, 3000);
+        }
+
+        // Вход
+        function login() {
+            const name = document.getElementById('loginName').value;
+            const password = document.getElementById('loginPassword').value;
+            const error = document.getElementById('error');
+            const secret = document.getElementById('secret');
+
+            attempts++;
+
+            if (!userData) {
+                userData = JSON.parse(localStorage.getItem('terribleUser'));
+            }
+
+            if (userData && name === userData.name && password === userData.password) {
+                secret.style.display = 'block';
+                document.getElementById('successMessage').textContent =
+                    `ВАШЕ ИМА: ${userData.name} | ПАРОЛ: ${userData.password}`;
+                playVictorySound();
+                clearInterval(cookieInterval);
+            } else {
+                const errorMessages = [
+                    '❌ НИПРОВЕЛЬНА!!! ПАРОЛ НИВИРНЫ!!!',
+                    '🚫 АТКАЗАНА!!! ВЫ ЗАБЫЛЕ СВАЙ ПАРОЛ!!!',
+                    '⛔ ЕТТА НИ ПРАВИЛЬНА!!! ПАПРОБУЙТЕ ЕЩО!!!',
+                    '🔒 ДОСУТП ЗАПРИШОН!!! ФБР УЖЕ В ПУТИ!!!',
+                    '💀 ВАШ КОМПЮТОР СИЧАС ВЗАРВЕЦА!!!',
+                    '🚨 ПАЛИЦИЯ ВЫСЛАНА ПА АДРЕСУ!!!',
+                    '⚠️ ИМЯ И ПАРОЛ НИСАВПАДАЮТ!!!',
+                    '🔥 ВАШ IP: 127.0.0.1 АТСЛЕЖИВАЕЦА!!!',
+                ];
+
+                error.textContent = errorMessages[attempts % errorMessages.length];
+
+                // Кнопка убегает
+                const btn = document.querySelector('.login-container > button');
+                btn.style.position = 'fixed';
+                btn.style.top = (Math.random() * 70 + 10) + '%';
+                btn.style.left = (Math.random() * 70 + 10) + '%';
+
+                // Трясём экран
+                document.body.style.animation = 'crazyShake 0.1s infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 500);
+
+                // Больше попапов при ошибке
+                if (attempts % 2 === 0) {
+                    showCookiePopup();
+                }
+            }
+        }
+
+        function playVictorySound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 440;
+            gainNode.gain.value = 0.3;
+
+            oscillator.start();
+
+            setTimeout(() => oscillator.frequency.value = 554, 200);
+            setTimeout(() => oscillator.frequency.value = 659, 400);
+            setTimeout(() => oscillator.stop(), 600);
+        }
+
+        // Cookie попапы
+        function showCookiePopup() {
+            const popups = [1, 2, 3];
+            const randomPopup = popups[Math.floor(Math.random() * popups.length)];
+            const popup = document.getElementById('cookiePopup' + randomPopup);
+
+            popup.style.display = 'block';
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+                if (Math.random() > 0.3) {
+                    showCookiePopup();
+                }
+            }, 5000);
+        }
+
+        function acceptCookies(id) {
+            cookieCount++;
+            document.getElementById('cookiePopup' + id).style.display = 'none';
+
+            if (cookieCount % 3 === 0) {
+                alert('✅ КУКИС ПРИНЯТЫМ! ТЕПЕРЬ МЫ ЗНАЕМ ВСЁ О ВАС! ВАШЭ АДРЕС, ТЕЛЕФОН, КРЕДИТКА!!!');
+            }
+
+            setTimeout(showCookiePopup, 3000);
+        }
+
+        function denyCookies(id) {
+            alert('❌ ВЫ НЕ МОЖЫТЕ ОТКАЗАТЬ ОТ КУКИС! ОНЕ ОБЯЗАТЕЛЬНЫ ДЛА КРАЖИ ВАШЫХ ДАНЫХ!!!');
+            acceptCookies(id);
+        }
+
+        // Прыгающее печенье
+        function spawnFlyingCookie() {
+            const cookie = document.createElement('div');
+            cookie.className = 'flying-cookie';
+            cookie.textContent = '🍪';
+            cookie.style.top = (Math.random() * 80) + '%';
+
+            cookie.onclick = function() {
+                alert('🍪 ВЫ ПОЙМАЛЕ ПЕЧЕНЬКУ! +1000 ОЧКОВ ХАКЕРА! ТЕПЕРЬ У ВАС ' + (++cookieCount) + ' КУКИС!!!');
+                this.remove();
+            };
+
+            document.body.appendChild(cookie);
+
+            setTimeout(() => {
+                cookie.remove();
+                spawnFlyingCookie();
+            }, 3000);
+        }
+
+        // Фейковая реклама
+        function showFakeAd() {
+            document.getElementById('adOverlay').style.display = 'flex';
+        }
+
+        function closeAd() {
+            document.getElementById('adOverlay').style.display = 'none';
+            alert('😈 ПОЗДРАВЛЯЕМ! ТЕПЕРЬ НА ВАШЭМ КОМПЮТОРЕ 9999 ВИРУСОВ! АНТИВИРУС НЕМОЩЕН!!!');
+        }
+
+        function closeAdWithTabs() {
+            document.getElementById('adOverlay').style.display = 'none';
+            openMultipleTabs();
+            alert('🎉 ПОЗДРАВЛЯЕМ! ВЫ ВЫИГРАЛЕ! ОТКРЫВАЕМ ВАШЕ ПРИЗ В НОВЫХ ВКЛАДКАХ!!!');
+        }
+
+        // Открытие множества вкладок
+        function openMultipleTabs() {
+            const fakeUrls = [
+                'about:blank',
+                'about:blank',
+                'about:blank',
+                'about:blank',
+                'about:blank'
+            ];
+
+            fakeUrls.forEach((url, index) => {
+                setTimeout(() => {
+                    try {
+                        window.open(url, '_blank');
+                    } catch(e) {
+                        console.log('Popup blocked');
+                    }
+                }, index * 100);
+            });
+        }
+
+        // Показать случайную спам-рекламу
+        function showRandomSpamAd() {
+            const totalAds = 10;
+            const randomAd = Math.floor(Math.random() * totalAds) + 1;
+            const adElement = document.getElementById('spamAd' + randomAd);
+            if (adElement) {
+                adElement.style.display = 'block';
+                setTimeout(() => {
+                    if (Math.random() > 0.5) {
+                        showRandomSpamAd();
+                    }
+                }, 3000 + Math.random() * 5000);
+            }
+        }
+
+        function closeSpamAd(id) {
+            document.getElementById('spamAd' + id).style.display = 'none';
+            if (Math.random() > 0.3) {
+                setTimeout(showRandomSpamAd, 1000);
+            }
+        }
+
+        function clickSpamAd(id) {
+            openMultipleTabs();
+            alert(['😱 ВЫ НАЖАЛЕ НА РЕКЛАМУ! ОТКРЫВАЕМ 5 ВКЛАДОК!',
+                   '🎰 ПОЗДРАВЛЯЕМ! ВЫ ПОДПИСАНЫ НА ПЛАТНУЮ ПОДПИСКУ 999$/МЕСЯЦ!',
+                   '🔥 СПАСИБО ЗА ПОКУПКУ! С ВАШЕГО СЧЕТА СПИСАНО 10000$!',
+                   '💀 ВИРУС УСТАНОВЛЕН УСПЕШНО!',
+                   '🚨 ВАШ IP АДРЕС ОТПРАВЛЕН В ФБР!',
+                   '⚠️ ТЕПЕРЬ ВЫ ПОДПИСАНЫ НА 500 EMAIL РАССЫЛОК!'][Math.floor(Math.random() * 6)]);
+            closeSpamAd(id);
+
+            if (Math.random() > 0.5) {
+                setTimeout(showRandomSpamAd, 500);
+            }
+        }
+
+        // Случайные алерты
+        let alertCount = 0;
+        setInterval(() => {
+            if (document.getElementById('loginPage').style.display === 'block' && Math.random() > 0.95) {
+                const alerts = [
+                    '⚠️ ВНИМАНИЕ! ХАКЕРСКАЯ АТАКА ОБНАРУЖЕНА!',
+                    '🚨 ВАШ КОМПЮТОР ЗАРАЖОН!',
+                    '🔥 КРИТИЧЕСКАЯ АШИБКА СИСТЕМЫ!',
+                    '💀 ВИРУС ДЕТЕКТЕД!',
+                    '⚡ ПЕРЕГРЕВ ПРОЦЕССОРА!',
+                ];
+                if (alertCount < 5) {
+                    alertCount++;
+                    alert(alerts[Math.floor(Math.random() * alerts.length)]);
+                }
+            }
+        }, 10000);
+
+        // Случайный курсор
+        document.addEventListener('mousemove', (e) => {
+            if (document.getElementById('loginPage').style.display === 'block' && Math.random() > 0.97) {
+                document.body.style.cursor = ['💀', '🔥', '⚠️', '🍪', '🚨'][Math.floor(Math.random() * 5)];
+                setTimeout(() => {
+                    document.body.style.cursor = 'default';
+                }, 1000);
+            }
+        });
+
+        // Проверка сохранённых данных
+        window.onload = function() {
+            document.body.className = 'register-mode';
+
+            const saved = localStorage.getItem('terribleUser');
+            if (saved) {
+                if (confirm('Вы уже регистрировались. Хотите войти?')) {
+                    userData = JSON.parse(saved);
+                    document.body.className = 'login-mode';
+                    document.getElementById('registerPage').style.display = 'none';
+                    document.getElementById('loginPage').style.display = 'block';
+                    setTimeout(showCookiePopup, 2000);
+                    setTimeout(spawnFlyingCookie, 1000);
+                    setTimeout(showFakeAd, 5000);
+                } else {
+                    localStorage.removeItem('terribleUser');
+                    location.reload();
+                }
+            }
+        };
+    </script>
+</body>
+</html>

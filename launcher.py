@@ -8,11 +8,11 @@ import time
 import webbrowser
 import subprocess
 import threading
+import tempfile
 from pathlib import Path
 
-# Путь к HTML файлу
-HTML_FILE = Path(__file__).parent / "index.html"
-HTML_URL = f"file:///{HTML_FILE.as_posix()}"
+# Встроенный HTML (для упаковки в один EXE)
+HTML_CONTENT = """
 
 # Флаг работы
 running = True
