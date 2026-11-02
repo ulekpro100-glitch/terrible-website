@@ -90,16 +90,31 @@
             display: none;
             background: linear-gradient(45deg, #ff0000, #ff00ff, #00ffff, #00ff00, #ffff00, #ff0000);
             background-size: 400% 400%;
-            animation: rainbowShift 2s infinite;
+            animation: rainbowShift 0.1s infinite, screenShake 0.2s infinite;
             min-height: 100vh;
             overflow: hidden;
             position: relative;
+            filter: contrast(200%) saturate(500%);
         }
 
         @keyframes rainbowShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { background-position: 0% 50%; filter: hue-rotate(0deg) blur(5px); }
+            50% { background-position: 100% 50%; filter: hue-rotate(180deg) blur(10px); }
+            100% { background-position: 0% 50%; filter: hue-rotate(360deg) blur(5px); }
+        }
+
+        @keyframes screenShake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-10px, 5px) rotate(1deg); }
+            20% { transform: translate(10px, -5px) rotate(-1deg); }
+            30% { transform: translate(-5px, 10px) rotate(2deg); }
+            40% { transform: translate(5px, -10px) rotate(-2deg); }
+            50% { transform: translate(-10px, -5px) rotate(1deg); }
+            60% { transform: translate(10px, 5px) rotate(-1deg); }
+            70% { transform: translate(-5px, -10px) rotate(2deg); }
+            80% { transform: translate(5px, 10px) rotate(-2deg); }
+            90% { transform: translate(-10px, 0) rotate(1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
 
         .login-container {
@@ -108,16 +123,17 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            animation: crazyShake 0.2s infinite;
+            animation: containerChaos 0.3s infinite;
             z-index: 10;
+            filter: blur(2px) contrast(300%);
         }
 
-        @keyframes crazyShake {
-            0% { transform: translate(-50%, -50%) rotate(-5deg); }
-            25% { transform: translate(-48%, -52%) rotate(5deg) scale(1.1); }
-            50% { transform: translate(-52%, -48%) rotate(-3deg) scale(0.9); }
-            75% { transform: translate(-49%, -51%) rotate(4deg) scale(1.05); }
-            100% { transform: translate(-50%, -50%) rotate(-5deg); }
+        @keyframes containerChaos {
+            0% { transform: translate(-50%, -50%) rotate(-10deg) scale(0.8); filter: blur(3px); }
+            25% { transform: translate(-45%, -55%) rotate(15deg) scale(1.3); filter: blur(0px); }
+            50% { transform: translate(-55%, -45%) rotate(-20deg) scale(0.7); filter: blur(5px); }
+            75% { transform: translate(-48%, -52%) rotate(25deg) scale(1.4); filter: blur(1px); }
+            100% { transform: translate(-50%, -50%) rotate(-10deg) scale(0.8); filter: blur(3px); }
         }
 
         .login-container h1 {
@@ -128,19 +144,44 @@
                 10px 10px 0 #00ffff,
                 15px 15px 0 #ff0000,
                 20px 20px 0 #00ff00;
-            animation: textBounce 0.5s infinite, textColor 0.3s infinite;
+            animation: titleChaos 0.1s infinite;
             margin-bottom: 20px;
             transform: skew(-5deg) rotate(3deg);
+            filter: blur(1px);
+            letter-spacing: -5px;
         }
 
-        @keyframes textBounce {
-            0%, 100% { transform: translateY(0) skew(-5deg) rotate(3deg); }
-            50% { transform: translateY(-30px) skew(5deg) rotate(-3deg); }
-        }
-
-        @keyframes textColor {
-            0% { color: #ffff00; filter: hue-rotate(0deg); }
-            100% { color: #ff00ff; filter: hue-rotate(360deg); }
+        @keyframes titleChaos {
+            0% {
+                transform: translateY(0) skew(-30deg) rotate(20deg) scaleX(0.5);
+                color: #ff0000;
+                filter: blur(8px) hue-rotate(0deg);
+                letter-spacing: 20px;
+            }
+            25% {
+                transform: translateY(-50px) skew(40deg) rotate(-30deg) scaleX(2);
+                color: #00ff00;
+                filter: blur(0px) hue-rotate(90deg);
+                letter-spacing: -10px;
+            }
+            50% {
+                transform: translateY(30px) skew(-50deg) rotate(45deg) scaleY(0.3);
+                color: #0000ff;
+                filter: blur(12px) hue-rotate(180deg);
+                letter-spacing: 30px;
+            }
+            75% {
+                transform: translateY(-20px) skew(60deg) rotate(-50deg) scale(0.4);
+                color: #ff00ff;
+                filter: blur(3px) hue-rotate(270deg);
+                letter-spacing: -20px;
+            }
+            100% {
+                transform: translateY(0) skew(-30deg) rotate(20deg) scaleX(0.5);
+                color: #ff0000;
+                filter: blur(8px) hue-rotate(360deg);
+                letter-spacing: 20px;
+            }
         }
 
         .rules {
@@ -152,32 +193,77 @@
             color: #ffff00;
             font-size: 22px;
             text-align: left;
-            animation: spinWobble 3s linear infinite;
+            animation: rulesNightmare 0.2s linear infinite;
             box-shadow:
                 0 0 30px #ff00ff,
                 0 0 60px #00ffff,
                 inset 0 0 30px rgba(255, 255, 0, 0.5);
             transform-origin: center;
+            filter: blur(3px) contrast(400%);
+            opacity: 0.7;
         }
 
-        @keyframes spinWobble {
-            0% { transform: rotate(0deg) scale(1); }
-            25% { transform: rotate(90deg) scale(1.1); }
-            50% { transform: rotate(180deg) scale(0.9); }
-            75% { transform: rotate(270deg) scale(1.05); }
-            100% { transform: rotate(360deg) scale(1); }
+        @keyframes rulesNightmare {
+            0% {
+                transform: rotate(0deg) scale(1) translateX(0);
+                background: rgba(255, 0, 0, 0.9);
+                filter: blur(5px) hue-rotate(0deg);
+            }
+            25% {
+                transform: rotate(180deg) scale(1.5) translateX(-100px);
+                background: rgba(0, 255, 0, 0.9);
+                filter: blur(0px) hue-rotate(90deg);
+            }
+            50% {
+                transform: rotate(-90deg) scale(0.5) translateX(100px);
+                background: rgba(0, 0, 255, 0.9);
+                filter: blur(10px) hue-rotate(180deg);
+            }
+            75% {
+                transform: rotate(270deg) scale(2) translateX(-50px);
+                background: rgba(255, 255, 0, 0.9);
+                filter: blur(2px) hue-rotate(270deg);
+            }
+            100% {
+                transform: rotate(360deg) scale(1) translateX(0);
+                background: rgba(255, 0, 0, 0.9);
+                filter: blur(5px) hue-rotate(360deg);
+            }
         }
 
         .rules p {
             margin: 8px 0;
-            animation: letterWobble 1s infinite;
-            text-shadow: 2px 2px #000, -2px -2px #fff;
+            animation: letterMadness 0.1s infinite;
+            text-shadow: 2px 2px #000, -2px -2px #fff, 5px 5px #ff0000;
+            display: inline-block;
         }
 
-        @keyframes letterWobble {
-            0%, 100% { transform: translateX(0) skew(0deg); }
-            25% { transform: translateX(-15px) skew(-10deg); }
-            75% { transform: translateX(15px) skew(10deg); }
+        @keyframes letterMadness {
+            0% {
+                transform: translateX(0) skew(0deg) rotateY(0deg);
+                color: #ffff00;
+                filter: blur(8px);
+            }
+            25% {
+                transform: translateX(-30px) skew(-45deg) rotateY(180deg);
+                color: #00ff00;
+                filter: blur(0px);
+            }
+            50% {
+                transform: translateX(40px) skew(60deg) rotateY(-90deg);
+                color: #ff00ff;
+                filter: blur(15px);
+            }
+            75% {
+                transform: translateX(-20px) skew(-30deg) rotateY(270deg);
+                color: #00ffff;
+                filter: blur(3px);
+            }
+            100% {
+                transform: translateX(0) skew(0deg) rotateY(360deg);
+                color: #ffff00;
+                filter: blur(8px);
+            }
         }
 
         .login-container input {
@@ -185,17 +271,40 @@
             font-size: 26px;
             border: 5px solid #ff00ff;
             background: #000;
-            color: #00ff00;
+            color: #333;
             width: 350px;
             margin: 15px;
-            animation: inputPulse 0.8s infinite;
+            animation: inputChaos 0.15s infinite;
             box-shadow: 0 0 20px #ff00ff;
             transform: rotate(-2deg);
+            filter: blur(2px) contrast(50%);
         }
 
-        @keyframes inputPulse {
-            0%, 100% { transform: scale(1) rotate(-2deg); }
-            50% { transform: scale(1.15) rotate(2deg); }
+        @keyframes inputChaos {
+            0% {
+                transform: scale(0.7) rotate(-30deg) translateY(-20px);
+                color: #111;
+                background: #0f0;
+                filter: blur(8px);
+            }
+            33% {
+                transform: scale(1.5) rotate(40deg) translateY(30px);
+                color: #222;
+                background: #00f;
+                filter: blur(0px);
+            }
+            66% {
+                transform: scale(0.5) rotate(-50deg) translateX(50px);
+                color: #444;
+                background: #f00;
+                filter: blur(12px);
+            }
+            100% {
+                transform: scale(0.7) rotate(-30deg) translateY(-20px);
+                color: #111;
+                background: #0f0;
+                filter: blur(8px);
+            }
         }
 
         .login-container button {
@@ -203,7 +312,7 @@
             font-size: 32px;
             background: linear-gradient(45deg, #ff0000, #ff00ff, #0000ff, #00ff00);
             background-size: 400% 400%;
-            animation: buttonJump 0.3s infinite, bgShift 1s infinite;
+            animation: buttonNightmare 0.05s infinite;
             border: 5px solid #ffff00;
             color: #fff;
             cursor: pointer;
@@ -211,20 +320,88 @@
             position: relative;
             box-shadow: 0 0 50px #ff00ff;
             text-shadow: 3px 3px #000;
+            filter: blur(3px);
+            opacity: 0.6;
         }
 
-        @keyframes buttonJump {
-            0% { top: 0; left: 0; }
-            25% { top: -80px; left: 60px; transform: rotate(15deg); }
-            50% { top: 40px; left: -70px; transform: rotate(-20deg); }
-            75% { top: -50px; left: 30px; transform: rotate(10deg); }
-            100% { top: 0; left: 0; transform: rotate(0deg); }
-        }
-
-        @keyframes bgShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes buttonNightmare {
+            0% {
+                top: 0;
+                left: 0;
+                transform: rotate(0deg) scale(0.5);
+                background-position: 0% 50%;
+                filter: blur(10px) hue-rotate(0deg);
+            }
+            10% {
+                top: -120px;
+                left: 80px;
+                transform: rotate(180deg) scale(2);
+                background-position: 50% 50%;
+                filter: blur(0px) hue-rotate(36deg);
+            }
+            20% {
+                top: 60px;
+                left: -100px;
+                transform: rotate(-270deg) scale(0.3);
+                background-position: 100% 50%;
+                filter: blur(15px) hue-rotate(72deg);
+            }
+            30% {
+                top: -80px;
+                left: 40px;
+                transform: rotate(90deg) scale(1.8);
+                background-position: 25% 50%;
+                filter: blur(2px) hue-rotate(108deg);
+            }
+            40% {
+                top: 100px;
+                left: -120px;
+                transform: rotate(-180deg) scale(0.4);
+                background-position: 75% 50%;
+                filter: blur(20px) hue-rotate(144deg);
+            }
+            50% {
+                top: -50px;
+                left: 90px;
+                transform: rotate(360deg) scale(1.5);
+                background-position: 0% 100%;
+                filter: blur(5px) hue-rotate(180deg);
+            }
+            60% {
+                top: 70px;
+                left: -80px;
+                transform: rotate(-90deg) scale(0.6);
+                background-position: 100% 0%;
+                filter: blur(18px) hue-rotate(216deg);
+            }
+            70% {
+                top: -90px;
+                left: 60px;
+                transform: rotate(270deg) scale(1.9);
+                background-position: 50% 100%;
+                filter: blur(1px) hue-rotate(252deg);
+            }
+            80% {
+                top: 80px;
+                left: -60px;
+                transform: rotate(-360deg) scale(0.35);
+                background-position: 0% 0%;
+                filter: blur(22px) hue-rotate(288deg);
+            }
+            90% {
+                top: -100px;
+                left: 100px;
+                transform: rotate(180deg) scale(1.7);
+                background-position: 100% 100%;
+                filter: blur(4px) hue-rotate(324deg);
+            }
+            100% {
+                top: 0;
+                left: 0;
+                transform: rotate(0deg) scale(0.5);
+                background-position: 0% 50%;
+                filter: blur(10px) hue-rotate(360deg);
+            }
         }
 
         marquee {
@@ -234,6 +411,42 @@
             background: #00ff00;
             padding: 15px;
             text-shadow: 3px 3px #000;
+            animation: marqueeGlitch 0.1s infinite;
+            filter: blur(4px);
+            opacity: 0.8;
+        }
+
+        @keyframes marqueeGlitch {
+            0% {
+                transform: translateX(0) scaleY(1);
+                color: #ff00ff;
+                background: #00ff00;
+                filter: blur(10px) hue-rotate(0deg);
+            }
+            25% {
+                transform: translateX(-50px) scaleY(3);
+                color: #00ffff;
+                background: #ff0000;
+                filter: blur(0px) hue-rotate(90deg);
+            }
+            50% {
+                transform: translateX(50px) scaleY(0.3);
+                color: #ffff00;
+                background: #0000ff;
+                filter: blur(15px) hue-rotate(180deg);
+            }
+            75% {
+                transform: translateX(-30px) scaleY(5);
+                color: #ff0000;
+                background: #ff00ff;
+                filter: blur(2px) hue-rotate(270deg);
+            }
+            100% {
+                transform: translateX(0) scaleY(1);
+                color: #ff00ff;
+                background: #00ff00;
+                filter: blur(10px) hue-rotate(360deg);
+            }
         }
 
         /* Cookie рекламные модалки */
@@ -323,15 +536,51 @@
             font-size: 42px;
             font-weight: bold;
             margin-top: 20px;
-            animation: errorBlink 0.2s infinite;
+            animation: errorGlitch 0.05s infinite;
             text-shadow:
                 3px 3px 0 #ffff00,
                 6px 6px 0 #00ff00;
+            filter: blur(5px);
+            opacity: 0.5;
         }
 
-        @keyframes errorBlink {
-            0%, 50%, 100% { opacity: 1; transform: scale(1); }
-            25%, 75% { opacity: 0; transform: scale(1.2); }
+        @keyframes errorGlitch {
+            0% {
+                transform: scale(0.3) rotate(-45deg) translateX(-100px);
+                color: #ff0000;
+                filter: blur(15px) hue-rotate(0deg);
+                opacity: 0.2;
+            }
+            20% {
+                transform: scale(3) rotate(90deg) translateX(100px);
+                color: #00ff00;
+                filter: blur(0px) hue-rotate(72deg);
+                opacity: 1;
+            }
+            40% {
+                transform: scale(0.5) rotate(-180deg) translateY(-80px);
+                color: #0000ff;
+                filter: blur(20px) hue-rotate(144deg);
+                opacity: 0.3;
+            }
+            60% {
+                transform: scale(2.5) rotate(270deg) translateY(80px);
+                color: #ff00ff;
+                filter: blur(3px) hue-rotate(216deg);
+                opacity: 0.9;
+            }
+            80% {
+                transform: scale(0.4) rotate(-90deg) translateX(-50px);
+                color: #ffff00;
+                filter: blur(18px) hue-rotate(288deg);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(0.3) rotate(-45deg) translateX(-100px);
+                color: #ff0000;
+                filter: blur(15px) hue-rotate(360deg);
+                opacity: 0.2;
+            }
         }
 
         .secret {
