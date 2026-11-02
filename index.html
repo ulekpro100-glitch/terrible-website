@@ -11,151 +11,307 @@
         }
 
         body {
-            background: linear-gradient(45deg, #000, #ff00ff, #00ffff, #ff0000, #00ff00);
-            background-size: 400% 400%;
-            animation: gradientShift 3s infinite;
             font-family: 'Comic Sans MS', cursive;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        @keyframes gradientShift {
+        /* Минималистичный стиль регистрации */
+        .register-page {
+            display: block;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .register-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .register-container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .register-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        .register-container button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+
+        .register-container button:hover {
+            background: #0056b3;
+        }
+
+        /* УЖАСНЫЙ стиль после регистрации */
+        .login-page {
+            display: none;
+            background: linear-gradient(45deg, #ff0000, #ff00ff, #00ffff, #00ff00, #ffff00, #ff0000);
+            background-size: 400% 400%;
+            animation: rainbowShift 2s infinite;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes rainbowShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .container {
+        .login-container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            animation: shake 0.3s infinite;
+            animation: crazyShake 0.2s infinite;
+            z-index: 10;
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-            25% { transform: translate(-48%, -52%) rotate(2deg); }
-            75% { transform: translate(-52%, -48%) rotate(-2deg); }
+        @keyframes crazyShake {
+            0% { transform: translate(-50%, -50%) rotate(-5deg); }
+            25% { transform: translate(-48%, -52%) rotate(5deg) scale(1.1); }
+            50% { transform: translate(-52%, -48%) rotate(-3deg) scale(0.9); }
+            75% { transform: translate(-49%, -51%) rotate(4deg) scale(1.05); }
+            100% { transform: translate(-50%, -50%) rotate(-5deg); }
         }
 
         h1 {
             color: #ffff00;
-            font-size: 72px;
-            text-shadow: 3px 3px #ff00ff, 6px 6px #00ffff, 9px 9px #ff0000;
-            animation: colorChange 0.5s infinite, bounce 1s infinite;
-            margin-bottom: 30px;
+            font-size: 82px;
+            text-shadow:
+                5px 5px 0 #ff00ff,
+                10px 10px 0 #00ffff,
+                15px 15px 0 #ff0000,
+                20px 20px 0 #00ff00;
+            animation: textBounce 0.5s infinite, textColor 0.3s infinite;
+            margin-bottom: 20px;
+            transform: skew(-5deg) rotate(3deg);
         }
 
-        @keyframes colorChange {
-            0% { color: #ffff00; }
-            25% { color: #ff00ff; }
-            50% { color: #00ffff; }
-            75% { color: #00ff00; }
-            100% { color: #ffff00; }
+        @keyframes textBounce {
+            0%, 100% { transform: translateY(0) skew(-5deg) rotate(3deg); }
+            50% { transform: translateY(-30px) skew(5deg) rotate(-3deg); }
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes textColor {
+            0% { color: #ffff00; filter: hue-rotate(0deg); }
+            100% { color: #ff00ff; filter: hue-rotate(360deg); }
         }
 
         .rules {
-            background: rgba(255, 0, 255, 0.8);
-            border: 5px dashed #00ff00;
-            padding: 20px;
+            background: rgba(255, 0, 0, 0.9);
+            border: 8px double #00ff00;
+            padding: 25px;
             margin: 20px auto;
-            max-width: 600px;
+            max-width: 700px;
             color: #ffff00;
-            font-size: 18px;
+            font-size: 22px;
             text-align: left;
-            animation: spin 5s linear infinite;
-            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+            animation: spinWobble 3s linear infinite;
+            box-shadow:
+                0 0 30px #ff00ff,
+                0 0 60px #00ffff,
+                inset 0 0 30px rgba(255, 255, 0, 0.5);
+            transform-origin: center;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes spinWobble {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(0.9); }
+            75% { transform: rotate(270deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
         }
 
         .rules p {
-            margin: 10px 0;
-            animation: wobble 2s infinite;
+            margin: 8px 0;
+            animation: letterWobble 1s infinite;
+            text-shadow: 2px 2px #000, -2px -2px #fff;
         }
 
-        @keyframes wobble {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+        @keyframes letterWobble {
+            0%, 100% { transform: translateX(0) skew(0deg); }
+            25% { transform: translateX(-15px) skew(-10deg); }
+            75% { transform: translateX(15px) skew(10deg); }
         }
 
-        input {
-            padding: 15px;
-            font-size: 24px;
-            border: 3px solid #ff00ff;
+        .login-container input {
+            padding: 18px;
+            font-size: 26px;
+            border: 5px solid #ff00ff;
             background: #000;
             color: #00ff00;
-            width: 300px;
-            margin: 20px;
-            animation: pulse 1s infinite;
+            width: 350px;
+            margin: 15px;
+            animation: inputPulse 0.8s infinite;
+            box-shadow: 0 0 20px #ff00ff;
+            transform: rotate(-2deg);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        @keyframes inputPulse {
+            0%, 100% { transform: scale(1) rotate(-2deg); }
+            50% { transform: scale(1.15) rotate(2deg); }
         }
 
-        button {
-            padding: 20px 40px;
-            font-size: 28px;
-            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
-            border: none;
+        .login-container button {
+            padding: 25px 50px;
+            font-size: 32px;
+            background: linear-gradient(45deg, #ff0000, #ff00ff, #0000ff, #00ff00);
+            background-size: 400% 400%;
+            animation: buttonJump 0.3s infinite, bgShift 1s infinite;
+            border: 5px solid #ffff00;
             color: #fff;
             cursor: pointer;
             font-weight: bold;
             position: relative;
-            animation: buttonJump 0.5s infinite;
-            box-shadow: 0 0 30px #ff00ff;
+            box-shadow: 0 0 50px #ff00ff;
+            text-shadow: 3px 3px #000;
         }
 
         @keyframes buttonJump {
-            0% {
-                top: 0;
-                left: 0;
-            }
-            25% {
-                top: -50px;
-                left: 30px;
-            }
-            50% {
-                top: 20px;
-                left: -40px;
-            }
-            75% {
-                top: -30px;
-                left: 20px;
-            }
-            100% {
-                top: 0;
-                left: 0;
-            }
+            0% { top: 0; left: 0; }
+            25% { top: -80px; left: 60px; transform: rotate(15deg); }
+            50% { top: 40px; left: -70px; transform: rotate(-20deg); }
+            75% { top: -50px; left: 30px; transform: rotate(10deg); }
+            100% { top: 0; left: 0; transform: rotate(0deg); }
         }
 
-        button:hover {
-            animation: buttonJump 0.1s infinite, spin 0.5s linear infinite;
+        @keyframes bgShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        marquee {
+            font-size: 38px;
+            color: #ff00ff;
+            font-weight: bold;
+            background: #00ff00;
+            padding: 15px;
+            text-shadow: 3px 3px #000;
+        }
+
+        /* Cookie рекламные модалки */
+        .cookie-popup {
+            position: fixed;
+            background: linear-gradient(45deg, #ff6b00, #ffd700);
+            border: 5px solid #ff0000;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            z-index: 9999;
+            animation: popupBounce 1s infinite;
+            max-width: 400px;
+        }
+
+        @keyframes popupBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .cookie-popup h2 {
+            color: #ff0000;
+            font-size: 32px;
+            margin-bottom: 15px;
+            animation: blink 0.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cookie-popup p {
+            font-size: 18px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .cookie-popup button {
+            background: #00ff00;
+            color: #000;
+            border: 3px solid #ff0000;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: bold;
+            animation: buttonShake 0.3s infinite;
+        }
+
+        @keyframes buttonShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Прыгающее печенье */
+        .flying-cookie {
+            position: fixed;
+            font-size: 80px;
+            cursor: pointer;
+            z-index: 10000;
+            animation: cookieFly 3s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.8));
+        }
+
+        @keyframes cookieFly {
+            0% {
+                left: -100px;
+                top: 50%;
+                transform: rotate(0deg);
+            }
+            50% {
+                left: 50%;
+                top: 20%;
+                transform: rotate(720deg) scale(1.5);
+            }
+            100% {
+                left: 110%;
+                top: 80%;
+                transform: rotate(1440deg);
+            }
         }
 
         .error {
             color: #ff0000;
-            font-size: 36px;
+            font-size: 42px;
             font-weight: bold;
             margin-top: 20px;
-            animation: blink 0.3s infinite;
+            animation: errorBlink 0.2s infinite;
+            text-shadow:
+                3px 3px 0 #ffff00,
+                6px 6px 0 #00ff00;
         }
 
-        @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
+        @keyframes errorBlink {
+            0%, 50%, 100% { opacity: 1; transform: scale(1); }
+            25%, 75% { opacity: 0; transform: scale(1.2); }
         }
 
         .secret {
@@ -167,103 +323,238 @@
             height: 100%;
             background: #000;
             color: #00ff00;
-            font-size: 48px;
+            font-size: 52px;
             text-align: center;
             padding-top: 200px;
-            animation: flash 0.2s infinite;
+            animation: flash 0.1s infinite;
+            z-index: 100000;
         }
 
         @keyframes flash {
-            0%, 100% { background: #000; }
-            50% { background: #fff; }
+            0%, 100% { background: #000; color: #00ff00; }
+            50% { background: #fff; color: #ff0000; }
         }
 
-        marquee {
-            font-size: 32px;
-            color: #ff00ff;
-            font-weight: bold;
+        /* Фейковая реклама поверх всего */
+        .ad-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            z-index: 999999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-content {
+            background: linear-gradient(45deg, #ff0000, #ffff00);
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            animation: adPulse 0.5s infinite;
+            border: 10px solid #00ff00;
+        }
+
+        @keyframes adPulse {
+            0%, 100% { transform: scale(1) rotate(-2deg); }
+            50% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        .ad-content h1 {
+            font-size: 72px;
+            color: #ff0000;
+            margin-bottom: 30px;
+        }
+
+        .close-ad {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            background: #666;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            opacity: 0.3;
         }
     </style>
 </head>
 <body>
-    <marquee behavior="scroll" direction="left">!!! ВНИМАНИЕ !!! ЕТА СТРАНЕЦА ЗАЩИЩЕНА ПАРОЛЕМ !!! ВНИМАНИЕ !!!</marquee>
-    <marquee behavior="scroll" direction="right">!!! НЕ ПЫТАЙТЕС ВЗЛАМАТЬ !!! ЕТТО КАРАЕЦА ЗАКОНАМ !!!</marquee>
-
-    <div class="container">
-        <h1>🔒 ВХАД АБЯЗАТЕЛЕН 🔒</h1>
-
-        <div class="rules">
-            <p>📜 ПРАВЕЛЛА ВХАДА:</p>
-            <p>1. ПАРОЛ ДОЛЬЖЕН БЫТЬ ПРАВЕЛЬНЫМ</p>
-            <p>2. НИЛЬЗЯ ВЗЛАМЫВАТЬ ЕТАТ САИТ</p>
-            <p>3. ЕСЛЛИ ЗАБЫЛЕ ПАРОЛ - ТО ВЫ ПЛАХОЙ</p>
-            <p>4. ЕТАТ САИТ ИСПАЛЬЗУЕТ САМУЮ ЛУТШУЮ ЗАЩИТУ В МИРЕ!!!</p>
-            <p>5. АДМЕНЕСТРАТОР НЕ НЕСЕТ АТВЕТСТВЕННАСТИ ЗА НИЧТО</p>
-            <p>6. КУКИС ФАИЛЫ БУДУТ УКРАДИНЫ</p>
-            <p>7. ПАРОЛ ХРАНЕЦА В БАЗЕ ДАНЫХ С SHA-1024 ШИФРАВАНЬЕМ</p>
-            <p>⚠️ ЛЮБАЕ ПАМЫТКЕ ВЗЛОМА БУДЕТ КАРАЦА ЗАКОНАМ РФ И США АДНОВРЕМЕННА ⚠️</p>
+    <!-- Регистрация (минималистичная) -->
+    <div class="register-page" id="registerPage">
+        <div class="register-container">
+            <h1>Регистрация</h1>
+            <input type="text" id="regName" placeholder="Имя" autocomplete="off">
+            <input type="text" id="regPassword" placeholder="Пароль" autocomplete="off">
+            <button onclick="register()">Зарегистрироваться</button>
         </div>
-
-        <div>
-            <input type="text" id="password" placeholder="ВВЕДИТE ПАРОЛ ЗДЕСЬ" autocomplete="off">
-        </div>
-
-        <button onclick="checkPassword()">ВАЙТИ НА САИТ →→→</button>
-
-        <div class="error" id="error"></div>
     </div>
 
+    <!-- Вход (УЖАСНЫЙ дизайн) -->
+    <div class="login-page" id="loginPage">
+        <marquee behavior="scroll" direction="left" scrollamount="20">!!! ВНИМАНИЕ !!! ЕТА СТРАНЕЦА ЗАЩИЩЕНА ПАРОЛЕМ !!! ВНИМАНИЕ !!! МЫ УКРАДЕМ ВСЕ ВАШИ ДАНЫЯ !!!</marquee>
+        <marquee behavior="scroll" direction="right" scrollamount="15">!!! НЕ ПЫТАЙТЕС ВЗЛАМАТЬ !!! ЕТТО КАРАЕЦА ЗАКОНАМ РФ США И КОРЕИ АДНОВРЕМЕННА !!!</marquee>
+        <marquee behavior="alternate" direction="up" scrollamount="10" style="position: absolute; height: 100%; width: 200px; left: 0;">⚠️⚠️⚠️</marquee>
+        <marquee behavior="alternate" direction="up" scrollamount="10" style="position: absolute; height: 100%; width: 200px; right: 0;">🚨🚨🚨</marquee>
+
+        <div class="login-container">
+            <h1>🔒 ВХАД АБЯЗАТЕЛЕН 🔒</h1>
+
+            <div class="rules">
+                <p>📜 ПРАВЕЛЛА ВХАДА:</p>
+                <p>1. ПАРОЛ ДОЛЬЖЕН БЫТЬ ТАКОЙЖЕ КАК ПРЕ РЕГЕСТРАЦИЕ</p>
+                <p>2. НИЛЬЗЯ ВЗЛАМЫВАТЬ ЕТАТ САИТ ИНЧАЕ ТЮРМА 15 ЛЕТ</p>
+                <p>3. ЕСЛЛИ ЗАБЫЛЕ ПАРОЛ - МЫ СМЕЯЦА НАТ ВАМИ АХАХХАХА</p>
+                <p>4. ЕТАТ САИТ ИСПАЛЬЗУЕТ SHA-9999 БИТНОЕ ШИФРАВАНЬЕМ!!!</p>
+                <p>5. АДМЕНЕСТРАТОР КРАНЬШЕ НЕ АТВЕЧАИТ НА ВОПРАСИ</p>
+                <p>6. КУКИС БУДУТ УКРАДИНЫ И ПРАДАНЫ В ДАРКНЕТ</p>
+                <p>7. ВАЩЕ IP УЖЕ АТСЛЕЖИВАЕЦА 24/7 ФБР И ЦРУ</p>
+                <p>8. ПЕЧЕНЬКА НАШЕ ВСЁ СОГЛАСЧАЙТЕС ИНЧАЕ ВЗРЫФ</p>
+                <p>⚠️ НАЖЫМАЙТЕ ТОЛЬКА НА НАСТАЯЩИЕ КНОПКЕ НЕ НА ФАЛШИВЫЕ ⚠️</p>
+            </div>
+
+            <div>
+                <input type="text" id="loginName" placeholder="ВВЕДИТE ИМЯ ЗДЕСЬ" autocomplete="off">
+                <input type="text" id="loginPassword" placeholder="ВВЕДИТE ПАРОЛ ЗДЕСЬ" autocomplete="off">
+            </div>
+
+            <button onclick="login()">ВАЙТИ НА САИТ →→→</button>
+            <button onclick="showFakeAd()" style="margin-top: 20px; background: #666;">НИПРОВЕЛЬНАЯ КНОПКА</button>
+
+            <div class="error" id="error"></div>
+        </div>
+    </div>
+
+    <!-- Успешный вход -->
     <div class="secret" id="secret">
         <h1>🎉 ПОЗДРАВЛЯЕМ!!! 🎉</h1>
         <p>ВЫ УСПЕШНО ВЗЛОМАЛЕ САМЫЙ ЗАЩИЩЕННЫЙ САИТ В МИРЕ!!!</p>
-        <p>ПАРОЛ БЫЛ: "password123"</p>
+        <p id="successMessage"></p>
         <p>ТЕПЕРЬ ВЫ ХАКЕР УРОВНА 9999!!!</p>
-        <marquee>💰💰💰 ПОЛУЧАЙТЕ МИЛЛИОН ДОЛЛАРОВ 💰💰💰</marquee>
+        <marquee>💰💰💰 ПОЛУЧАЙТЕ МИЛЛИАРД ДОЛЛАРОВ 💰💰💰</marquee>
+        <marquee behavior="alternate">🏆 ВАС НАГРАДЯТ НОБЕЛЕВСКАЙ ПРЕМЕЕ 🏆</marquee>
+    </div>
+
+    <!-- Cookie попапы -->
+    <div class="cookie-popup" id="cookiePopup1" style="bottom: 20px; right: 20px; display: none;">
+        <h2>🍪 КУКИС!!! 🍪</h2>
+        <p>МЫ ИСПАЛЗУЕМ КУКИС ЧТОБЫ УКРАСТЬ ВСЕ ВАШЕ ДАНЫЯ! СОГЛАСЧАЕТЕСЬ???</p>
+        <button onclick="acceptCookies(1)">ДА УКРАДИТЕ</button>
+        <button onclick="denyCookies(1)">НЕТ (ВСЁ РАВНО УКРАДИМ)</button>
+    </div>
+
+    <div class="cookie-popup" id="cookiePopup2" style="top: 20px; left: 20px; display: none;">
+        <h2>⚠️ ЕЩО КУКИС!!! ⚠️</h2>
+        <p>ВНИМАНЬЕ! БЕЗ КУКИС САИТ НИБУДЕТ РАБОТАТ (ЭТО ЛОЖЬ)!</p>
+        <button onclick="acceptCookies(2)">ПРИНЯТЬ ВСЁ</button>
+        <button onclick="acceptCookies(2)">ОТКАЗАТЬ (НЕ РАБОТАЕТ)</button>
+    </div>
+
+    <div class="cookie-popup" id="cookiePopup3" style="top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;">
+        <h2>🔥 КРИТИЧЕСКА ВАЖНА!!! 🔥</h2>
+        <p>ЕТТА САИТ ТРЕБУЕТ 9999 ВИДОВ КУКИС ДЛА РАБОТЫ! СОГЛАСНЫ???</p>
+        <button onclick="acceptCookies(3)">СОГЛАСЕН</button>
+        <button onclick="acceptCookies(3)">СОГЛАСНА</button>
+        <button onclick="acceptCookies(3)">СОГЛАСНО</button>
+    </div>
+
+    <!-- Фейковая реклама -->
+    <div class="ad-overlay" id="adOverlay">
+        <button class="close-ad" onclick="closeAd()">x</button>
+        <div class="ad-content">
+            <h1>🎰 ВЫИГРАЙ МИЛЛИОН!!! 🎰</h1>
+            <p style="font-size: 48px; color: #000;">ТЫ 999999-Й ПОСИТИТЕЛЬ!</p>
+            <p style="font-size: 36px;">НАЖМИ СЮДА ЧТОБЫ ПОЛУЧИТЬ IPHONE 99 PRO MAX ULTRA!!!</p>
+            <button onclick="closeAd()" style="padding: 30px 60px; font-size: 40px; background: #ff0000; color: #ffff00; border: 5px solid #00ff00; margin-top: 30px;">ЗАБРАТ ПРИЗ →→→</button>
+        </div>
     </div>
 
     <script>
+        let userData = null;
         let attempts = 0;
+        let cookieCount = 0;
+        let cookieInterval;
 
-        function checkPassword() {
-            const input = document.getElementById('password');
+        // Регистрация
+        function register() {
+            const name = document.getElementById('regName').value.trim();
+            const password = document.getElementById('regPassword').value.trim();
+
+            if (!name || !password) {
+                alert('❌ ЗАПОЛНИТЕ ВСЕ ПОЛЯ!!!');
+                return;
+            }
+
+            userData = { name, password };
+            localStorage.setItem('terribleUser', JSON.stringify(userData));
+
+            // Переключаемся на ужасный дизайн входа
+            document.getElementById('registerPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
+
+            // Запускаем кошмар
+            setTimeout(showCookiePopup, 2000);
+            setTimeout(spawnFlyingCookie, 1000);
+            setTimeout(showFakeAd, 5000);
+        }
+
+        // Вход
+        function login() {
+            const name = document.getElementById('loginName').value;
+            const password = document.getElementById('loginPassword').value;
             const error = document.getElementById('error');
             const secret = document.getElementById('secret');
 
             attempts++;
 
-            if (input.value === 'password123') {
+            if (!userData) {
+                userData = JSON.parse(localStorage.getItem('terribleUser'));
+            }
+
+            if (userData && name === userData.name && password === userData.password) {
                 secret.style.display = 'block';
+                document.getElementById('successMessage').textContent =
+                    `ВАШЕ ИМА: ${userData.name} | ПАРОЛ: ${userData.password}`;
                 playVictorySound();
+                clearInterval(cookieInterval);
             } else {
                 const errorMessages = [
-                    '❌ НИПРОВЕЛЬНА!!! ПОПРОБУЙТЕ ЕЩО РАС!!!',
-                    '🚫 АТКАЗАНА В ДОСТУПЕ!!! ВЫ НЕ ХАКЕР!!!',
-                    '⛔ ЕТАТ ПАРОЛ НИПРАВЕТЕЛЬНЫ!!!',
-                    '🔒 ДОСУТП ЗАПРИЩЕН НАВСИГДА!!!',
-                    '💀 ВАШ КОМПЮТЕР СЕЙЧАС ВЗАРВЕЦА!!!',
-                    '🚨 ПАЛИЦИЯ УЖЕ ВЫСЛАНА ПА ВАШЫМУ АДРЕСУ!!!',
-                    '⚠️ ПОСЛИДНЯЯ ПОПЫТКА ЙЦЛИ БУДЕТ БАНА!!!',
-                    '🔥 ВАШ IP АДРЕС ЗАПИСАН: 127.0.0.1!!!',
+                    '❌ НИПРОВЕЛЬНА!!! ПАРОЛ НИВИРНЫ!!!',
+                    '🚫 АТКАЗАНА!!! ВЫ ЗАБЫЛЕ СВАЙ ПАРОЛ!!!',
+                    '⛔ ЕТТА НИ ПРАВИЛЬНА!!! ПАПРОБУЙТЕ ЕЩО!!!',
+                    '🔒 ДОСУТП ЗАПРИШОН!!! ФБР УЖЕ В ПУТИ!!!',
+                    '💀 ВАШ КОМПЮТОР СИЧАС ВЗАРВЕЦА!!!',
+                    '🚨 ПАЛИЦИЯ ВЫСЛАНА ПА АДРЕСУ!!!',
+                    '⚠️ ИМЯ И ПАРОЛ НИСАВПАДАЮТ!!!',
+                    '🔥 ВАШ IP: 127.0.0.1 АТСЛЕЖИВАЕЦА!!!',
                 ];
 
                 error.textContent = errorMessages[attempts % errorMessages.length];
 
-                // Random button jump
-                const btn = document.querySelector('button');
+                // Кнопка убегает
+                const btn = document.querySelector('.login-container > button');
                 btn.style.position = 'fixed';
-                btn.style.top = Math.random() * 80 + '%';
-                btn.style.left = Math.random() * 80 + '%';
+                btn.style.top = (Math.random() * 70 + 10) + '%';
+                btn.style.left = (Math.random() * 70 + 10) + '%';
 
-                // Shake screen
-                document.body.style.animation = 'shake 0.1s infinite';
+                // Трясём экран
+                document.body.style.animation = 'crazyShake 0.1s infinite';
                 setTimeout(() => {
                     document.body.style.animation = '';
                 }, 500);
+
+                // Больше попапов при ошибке
+                if (attempts % 2 === 0) {
+                    showCookiePopup();
+                }
             }
         }
 
         function playVictorySound() {
-            // Easter egg sound effect
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
@@ -276,34 +567,118 @@
 
             oscillator.start();
 
-            setTimeout(() => {
-                oscillator.frequency.value = 554;
-            }, 200);
-
-            setTimeout(() => {
-                oscillator.frequency.value = 659;
-            }, 400);
-
-            setTimeout(() => {
-                oscillator.stop();
-            }, 600);
+            setTimeout(() => oscillator.frequency.value = 554, 200);
+            setTimeout(() => oscillator.frequency.value = 659, 400);
+            setTimeout(() => oscillator.stop(), 600);
         }
 
-        // Random cursor position
+        // Cookie попапы
+        function showCookiePopup() {
+            const popups = [1, 2, 3];
+            const randomPopup = popups[Math.floor(Math.random() * popups.length)];
+            const popup = document.getElementById('cookiePopup' + randomPopup);
+
+            popup.style.display = 'block';
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+                if (Math.random() > 0.3) {
+                    showCookiePopup();
+                }
+            }, 5000);
+        }
+
+        function acceptCookies(id) {
+            cookieCount++;
+            document.getElementById('cookiePopup' + id).style.display = 'none';
+
+            if (cookieCount % 3 === 0) {
+                alert('✅ КУКИС ПРИНЯТЫМ! ТЕПЕРЬ МЫ ЗНАЕМ ВСЁ О ВАС! ВАШЭ АДРЕС, ТЕЛЕФОН, КРЕДИТКА!!!');
+            }
+
+            setTimeout(showCookiePopup, 3000);
+        }
+
+        function denyCookies(id) {
+            alert('❌ ВЫ НЕ МОЖЫТЕ ОТКАЗАТЬ ОТ КУКИС! ОНЕ ОБЯЗАТЕЛЬНЫ ДЛА КРАЖИ ВАШЫХ ДАНЫХ!!!');
+            acceptCookies(id);
+        }
+
+        // Прыгающее печенье
+        function spawnFlyingCookie() {
+            const cookie = document.createElement('div');
+            cookie.className = 'flying-cookie';
+            cookie.textContent = '🍪';
+            cookie.style.top = (Math.random() * 80) + '%';
+
+            cookie.onclick = function() {
+                alert('🍪 ВЫ ПОЙМАЛЕ ПЕЧЕНЬКУ! +1000 ОЧКОВ ХАКЕРА! ТЕПЕРЬ У ВАС ' + (++cookieCount) + ' КУКИС!!!');
+                this.remove();
+            };
+
+            document.body.appendChild(cookie);
+
+            setTimeout(() => {
+                cookie.remove();
+                spawnFlyingCookie();
+            }, 3000);
+        }
+
+        // Фейковая реклама
+        function showFakeAd() {
+            document.getElementById('adOverlay').style.display = 'flex';
+        }
+
+        function closeAd() {
+            document.getElementById('adOverlay').style.display = 'none';
+            alert('😈 ПОЗДРАВЛЯЕМ! ТЕПЕРЬ НА ВАШЭМ КОМПЮТОРЕ 9999 ВИРУСОВ! АНТИВИРУС НЕМОЩЕН!!!');
+        }
+
+        // Случайные алерты
+        let alertCount = 0;
+        setInterval(() => {
+            if (document.getElementById('loginPage').style.display === 'block' && Math.random() > 0.95) {
+                const alerts = [
+                    '⚠️ ВНИМАНИЕ! ХАКЕРСКАЯ АТАКА ОБНАРУЖЕНА!',
+                    '🚨 ВАШ КОМПЮТОР ЗАРАЖОН!',
+                    '🔥 КРИТИЧЕСКАЯ АШИБКА СИСТЕМЫ!',
+                    '💀 ВИРУС ДЕТЕКТЕД!',
+                    '⚡ ПЕРЕГРЕВ ПРОЦЕССОРА!',
+                ];
+                if (alertCount < 5) {
+                    alertCount++;
+                    alert(alerts[Math.floor(Math.random() * alerts.length)]);
+                }
+            }
+        }, 10000);
+
+        // Случайный курсор
         document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.95) {
-                document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'48\' viewport=\'0 0 100 100\' style=\'fill:black;font-size:24px;\'><text y=\'50%\'>💀</text></svg>") 16 0, auto';
+            if (document.getElementById('loginPage').style.display === 'block' && Math.random() > 0.97) {
+                document.body.style.cursor = ['💀', '🔥', '⚠️', '🍪', '🚨'][Math.floor(Math.random() * 5)];
+                setTimeout(() => {
+                    document.body.style.cursor = 'default';
+                }, 1000);
             }
         });
 
-        // Random alert spam
-        let alertCount = 0;
-        document.getElementById('password').addEventListener('focus', () => {
-            if (alertCount < 3 && Math.random() > 0.7) {
-                alertCount++;
-                alert('⚠️ ЭТО ПОЛЕ ЗАЩИЩЕНО!!! ВЫ УВЕРИНЫ ШТО ХАТИТЕ ВВЕСТИ ПАРОЛ???');
+        // Проверка сохранённых данных
+        window.onload = function() {
+            const saved = localStorage.getItem('terribleUser');
+            if (saved) {
+                if (confirm('❓ ВЫ УЖЕ РЕГИСТРИРОВАЛИС! ХОТИТЕ ВОЙТИ ЕЩО РАС???')) {
+                    userData = JSON.parse(saved);
+                    document.getElementById('registerPage').style.display = 'none';
+                    document.getElementById('loginPage').style.display = 'block';
+                    setTimeout(showCookiePopup, 2000);
+                    setTimeout(spawnFlyingCookie, 1000);
+                    setTimeout(showFakeAd, 5000);
+                } else {
+                    localStorage.removeItem('terribleUser');
+                    location.reload();
+                }
             }
-        });
+        };
     </script>
 </body>
 </html>
