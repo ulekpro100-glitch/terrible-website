@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ВХАД АБЯЗАТЕЛЕН!!1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #000, #ff00ff, #00ffff, #ff0000, #00ff00);
+            background-size: 400% 400%;
+            animation: gradientShift 3s infinite;
+            font-family: 'Comic Sans MS', cursive;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            animation: shake 0.3s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            25% { transform: translate(-48%, -52%) rotate(2deg); }
+            75% { transform: translate(-52%, -48%) rotate(-2deg); }
+        }
+
+        h1 {
+            color: #ffff00;
+            font-size: 72px;
+            text-shadow: 3px 3px #ff00ff, 6px 6px #00ffff, 9px 9px #ff0000;
+            animation: colorChange 0.5s infinite, bounce 1s infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes colorChange {
+            0% { color: #ffff00; }
+            25% { color: #ff00ff; }
+            50% { color: #00ffff; }
+            75% { color: #00ff00; }
+            100% { color: #ffff00; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .rules {
+            background: rgba(255, 0, 255, 0.8);
+            border: 5px dashed #00ff00;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            color: #ffff00;
+            font-size: 18px;
+            text-align: left;
+            animation: spin 5s linear infinite;
+            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .rules p {
+            margin: 10px 0;
+            animation: wobble 2s infinite;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        input {
+            padding: 15px;
+            font-size: 24px;
+            border: 3px solid #ff00ff;
+            background: #000;
+            color: #00ff00;
+            width: 300px;
+            margin: 20px;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 28px;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            animation: buttonJump 0.5s infinite;
+            box-shadow: 0 0 30px #ff00ff;
+        }
+
+        @keyframes buttonJump {
+            0% {
+                top: 0;
+                left: 0;
+            }
+            25% {
+                top: -50px;
+                left: 30px;
+            }
+            50% {
+                top: 20px;
+                left: -40px;
+            }
+            75% {
+                top: -30px;
+                left: 20px;
+            }
+            100% {
+                top: 0;
+                left: 0;
+            }
+        }
+
+        button:hover {
+            animation: buttonJump 0.1s infinite, spin 0.5s linear infinite;
+        }
+
+        .error {
+            color: #ff0000;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: blink 0.3s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
+        .secret {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            color: #00ff00;
+            font-size: 48px;
+            text-align: center;
+            padding-top: 200px;
+            animation: flash 0.2s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { background: #000; }
+            50% { background: #fff; }
+        }
+
+        marquee {
+            font-size: 32px;
+            color: #ff00ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <marquee behavior="scroll" direction="left">!!! ВНИМАНИЕ !!! ЕТА СТРАНЕЦА ЗАЩИЩЕНА ПАРОЛЕМ !!! ВНИМАНИЕ !!!</marquee>
+    <marquee behavior="scroll" direction="right">!!! НЕ ПЫТАЙТЕС ВЗЛАМАТЬ !!! ЕТТО КАРАЕЦА ЗАКОНАМ !!!</marquee>
+
+    <div class="container">
+        <h1>🔒 ВХАД АБЯЗАТЕЛЕН 🔒</h1>
+
+        <div class="rules">
+            <p>📜 ПРАВЕЛЛА ВХАДА:</p>
+            <p>1. ПАРОЛ ДОЛЬЖЕН БЫТЬ ПРАВЕЛЬНЫМ</p>
+            <p>2. НИЛЬЗЯ ВЗЛАМЫВАТЬ ЕТАТ САИТ</p>
+            <p>3. ЕСЛЛИ ЗАБЫЛЕ ПАРОЛ - ТО ВЫ ПЛАХОЙ</p>
+            <p>4. ЕТАТ САИТ ИСПАЛЬЗУЕТ САМУЮ ЛУТШУЮ ЗАЩИТУ В МИРЕ!!!</p>
+            <p>5. АДМЕНЕСТРАТОР НЕ НЕСЕТ АТВЕТСТВЕННАСТИ ЗА НИЧТО</p>
+            <p>6. КУКИС ФАИЛЫ БУДУТ УКРАДИНЫ</p>
+            <p>7. ПАРОЛ ХРАНЕЦА В БАЗЕ ДАНЫХ С SHA-1024 ШИФРАВАНЬЕМ</p>
+            <p>⚠️ ЛЮБАЕ ПАМЫТКЕ ВЗЛОМА БУДЕТ КАРАЦА ЗАКОНАМ РФ И США АДНОВРЕМЕННА ⚠️</p>
+        </div>
+
+        <div>
+            <input type="text" id="password" placeholder="ВВЕДИТE ПАРОЛ ЗДЕСЬ" autocomplete="off">
+        </div>
+
+        <button onclick="checkPassword()">ВАЙТИ НА САИТ →→→</button>
+
+        <div class="error" id="error"></div>
+    </div>
+
+    <div class="secret" id="secret">
+        <h1>🎉 ПОЗДРАВЛЯЕМ!!! 🎉</h1>
+        <p>ВЫ УСПЕШНО ВЗЛОМАЛЕ САМЫЙ ЗАЩИЩЕННЫЙ САИТ В МИРЕ!!!</p>
+        <p>ПАРОЛ БЫЛ: "password123"</p>
+        <p>ТЕПЕРЬ ВЫ ХАКЕР УРОВНА 9999!!!</p>
+        <marquee>💰💰💰 ПОЛУЧАЙТЕ МИЛЛИОН ДОЛЛАРОВ 💰💰💰</marquee>
+    </div>
+
+    <script>
+        let attempts = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('password');
+            const error = document.getElementById('error');
+            const secret = document.getElementById('secret');
+
+            attempts++;
+
+            if (input.value === 'password123') {
+                secret.style.display = 'block';
+                playVictorySound();
+            } else {
+                const errorMessages = [
+                    '❌ НИПРОВЕЛЬНА!!! ПОПРОБУЙТЕ ЕЩО РАС!!!',
+                    '🚫 АТКАЗАНА В ДОСТУПЕ!!! ВЫ НЕ ХАКЕР!!!',
+                    '⛔ ЕТАТ ПАРОЛ НИПРАВЕТЕЛЬНЫ!!!',
+                    '🔒 ДОСУТП ЗАПРИЩЕН НАВСИГДА!!!',
+                    '💀 ВАШ КОМПЮТЕР СЕЙЧАС ВЗАРВЕЦА!!!',
+                    '🚨 ПАЛИЦИЯ УЖЕ ВЫСЛАНА ПА ВАШЫМУ АДРЕСУ!!!',
+                    '⚠️ ПОСЛИДНЯЯ ПОПЫТКА ЙЦЛИ БУДЕТ БАНА!!!',
+                    '🔥 ВАШ IP АДРЕС ЗАПИСАН: 127.0.0.1!!!',
+                ];
+
+                error.textContent = errorMessages[attempts % errorMessages.length];
+
+                // Random button jump
+                const btn = document.querySelector('button');
+                btn.style.position = 'fixed';
+                btn.style.top = Math.random() * 80 + '%';
+                btn.style.left = Math.random() * 80 + '%';
+
+                // Shake screen
+                document.body.style.animation = 'shake 0.1s infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 500);
+            }
+        }
+
+        function playVictorySound() {
+            // Easter egg sound effect
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 440;
+            gainNode.gain.value = 0.3;
+
+            oscillator.start();
+
+            setTimeout(() => {
+                oscillator.frequency.value = 554;
+            }, 200);
+
+            setTimeout(() => {
+                oscillator.frequency.value = 659;
+            }, 400);
+
+            setTimeout(() => {
+                oscillator.stop();
+            }, 600);
+        }
+
+        // Random cursor position
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                document.body.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'48\' viewport=\'0 0 100 100\' style=\'fill:black;font-size:24px;\'><text y=\'50%\'>💀</text></svg>") 16 0, auto';
+            }
+        });
+
+        // Random alert spam
+        let alertCount = 0;
+        document.getElementById('password').addEventListener('focus', () => {
+            if (alertCount < 3 && Math.random() > 0.7) {
+                alertCount++;
+                alert('⚠️ ЭТО ПОЛЕ ЗАЩИЩЕНО!!! ВЫ УВЕРИНЫ ШТО ХАТИТЕ ВВЕСТИ ПАРОЛ???');
+            }
+        });
+    </script>
+</body>
+</html>
